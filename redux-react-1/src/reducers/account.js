@@ -10,6 +10,12 @@ import {
 } from "../actions";
 export const accountReducer = (state = { amount: 1 }, action) => {
   switch (action.type) {
+    case getAccUserFulFilled:
+      return { amount: action.payload, pending: false };
+    case getAccUserRejected:
+      return { ...state, error: action.error, pending: false };
+    case getAccUserPending:
+      return { ...state, pending: true };
     case INIT:
       return {
         ...state,

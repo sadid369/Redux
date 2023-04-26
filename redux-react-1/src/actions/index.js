@@ -9,12 +9,13 @@ export const INIT = "account/init";
 export const INCREMENT_BONUS = "bonus/increment";
 export const getUserAccount = (id) => {
   return async (dispatch, getState) => {
+    console.log("called");
     try {
       dispatch(getAccountUserPending());
-      const { data } = await axios.get(`http://localhost:3000/account/${id}`);
-      dispatch(getAccUserFulFilled(data.amount));
+      const { data } = await axios.get(`http://localhost:8080/account/${id}`);
+      dispatch(getAccountUserFulFilled(data.amount));
     } catch (error) {
-      dispatch(getAccUserRejected(error.message));
+      dispatch(getAccountUserRejected(error.message));
     }
   };
 };
