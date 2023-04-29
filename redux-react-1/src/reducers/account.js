@@ -10,7 +10,7 @@ import {
 } from "../actions";
 export const accountReducer = (state = { amount: 1 }, action) => {
   switch (action.type) {
-    case getAccUserFulFilled:
+    case getAccUserFulFilled: 
       return { amount: action.payload, pending: false };
     case getAccUserRejected:
       return { ...state, error: action.error, pending: false };
